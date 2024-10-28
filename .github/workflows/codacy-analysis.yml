@@ -1,9 +1,9 @@
 name: Codacy Analysis CLI
 
 on: 
-  push: # Ensure correct push syntax
+  push: 
     branches:
-      - master 
+      - master  # Trigger on pushes to master
 
 jobs:
   codacy-analysis-cli:
@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Correct version for checkout action
+        uses: actions/checkout@v2  # Latest stable version for checkout action
 
       - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@v1  # Correct version for Codacy CLI
+        uses: codacy/codacy-analysis-cli-action@master  # Switch to master branch of Codacy CLI
         with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}  # Ensure the secret is set
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}  # Ensure the secret is set correctly
